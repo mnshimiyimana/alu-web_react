@@ -1,4 +1,4 @@
-// the Student interface
+// The Student interface
 interface Student {
     firstName: string;
     lastName: string;
@@ -6,7 +6,7 @@ interface Student {
     location: string;
 }
 
-// student variables
+// Student variables
 const student1: Student = {
     firstName: "Marie",
     lastName: "Jane",
@@ -21,22 +21,38 @@ const student2: Student = {
     location: "Los Angeles"
 };
 
-// Store them in an array
+// Stored in an array
 const studentsList: Student[] = [student1, student2];
 
-//Rendering the table
-function renderTable(students: Student[]): void {
+// Rendering the table
+function studentTable(students: Student[]): void {
     const table = document.createElement('table');
-    document.body.appendChild(table);
 
+    // table header
+    const thead = table.createTHead();
+    const headerRow = thead.insertRow();
+    const headers = ["First Name", "Location", "Age"];
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+    });
+
+    // Create table body
+    const tbody = document.createElement('tbody');
     students.forEach(student => {
-        const row = table.insertRow();
+        const row = tbody.insertRow();
         const firstNameCell = row.insertCell(0);
         const locationCell = row.insertCell(1);
+        const ageCell = row.insertCell(2);
 
         firstNameCell.textContent = student.firstName;
         locationCell.textContent = student.location;
+        ageCell.textContent = student.age.toString();
     });
+
+    table.appendChild(tbody);
+    document.body.appendChild(table);
 }
 
-renderTable(studentsList);
+studentTable(studentsList);
