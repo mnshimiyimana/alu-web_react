@@ -1,30 +1,30 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  mode: 'development',  // Change to 'production' for production builds
-  entry: './src/index.ts',
+  mode: "development", // Change to 'production' for production builds
+  entry: "./src/index.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: [".ts", ".js"],
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     hot: true,
   },
 };
