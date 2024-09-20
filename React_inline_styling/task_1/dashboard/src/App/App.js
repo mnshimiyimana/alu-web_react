@@ -23,6 +23,7 @@ export default class App extends React.Component {
     { id: 3, type: "urgent", html: getLatestNotifications() },
   ];
 
+  // app.js
 
   componentDidMount() {
     window.addEventListener("keydown", (event) => {
